@@ -57,6 +57,7 @@
         <a class="nav__link" href="#para-quien">Para quién</a>
         <a class="nav__link" href="#como-funciona">Cómo funciona</a>
         <a class="nav__link" href="#beneficios">Beneficios</a>
+		<a class="nav__link" href="#eventos">Eventos</a>
       </nav>
 
       <div class="topbar__cta">
@@ -77,6 +78,7 @@
         <a class="mobile-menu__link" href="#para-quien">Para quién es</a>
         <a class="mobile-menu__link" href="#como-funciona">Cómo funciona</a>
         <a class="mobile-menu__link" href="#beneficios">Beneficios</a>
+		<a class="mobile-menu__link" href="#eventos">Eventos</a>
         <div class="mobile-menu__cta">
           <a class="btn btn--ghost" href="https://app.eboltix.com" target="_blank" rel="noopener">Entrar a la App</a>
           <a class="btn btn--primary" href="https://app.eboltix.com" target="_blank" rel="noopener">Organiza tu Evento</a>
@@ -360,6 +362,20 @@
       </div>
     </section>
 
+	<!-- 5) EVENTOS -->
+<section id="eventos" class="section">
+  <div class="container">
+    <div class="section__head">
+      <h2>Eventos disponibles</h2>
+      <p class="section__sub">
+        Descubre eventos activos y compra tus boletas fácilmente.
+      </p>
+    </div>
+
+    <div id="eventos-list" class="cards"></div>
+  </div>
+</section>
+	  
     <!-- 5) BENEFICIOS -->
     <section id="beneficios" class="section section--alt">
       <div class="container">
@@ -482,8 +498,39 @@
     });
 
     links.forEach(a => a.addEventListener('click', closeMenu));
-    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMenu(); });	  
   </script>
+
+	<script>
+const eventos = [
+  {
+    id: 1,
+    nombre: "Pool Party 2026",
+    fecha: "15 Junio 2026",
+    lugar: "Santo Domingo",
+    imagen: "https://via.placeholder.com/400x250"
+  }
+];
+
+const contenedor = document.getElementById("eventos-list");
+
+eventos.forEach(e => {
+  const card = document.createElement("div");
+  card.className = "card";
+
+  card.innerHTML = `
+    <img src="${e.imagen}" alt="${e.nombre}" style="width:100%; border-radius:12px;">
+    <h3>${e.nombre}</h3>
+    <p>${e.fecha} - ${e.lugar}</p>
+    <a href="https://app.eboltix.com/evento/${e.id}" target="_blank" class="btn btn--primary">
+      Comprar
+    </a>
+  `;
+
+  contenedor.appendChild(card);
+});
+</script>
+	
 </body>
 </html>
 
