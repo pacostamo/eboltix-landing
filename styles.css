@@ -711,4 +711,66 @@ img{ max-width: 100%; display: block; }
   .btn, .card{ transition: none; }
 }
 
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
 
+.carousel__track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+}
+
+.carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel__btn {
+  position: absolute;
+  z-index: 2;
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.carousel__btn.left {
+  left: -10px;
+}
+
+.carousel__btn.right {
+  right: -10px;
+}
+
+/* Cards */
+.carousel__track .card {
+  min-width: 280px;
+  max-width: 280px;
+  flex: 0 0 auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carousel__btn {
+    display: none;
+  }
+
+  .carousel__track .card {
+    min-width: 85%;
+  }
+}
+
+.carousel__track {
+  scroll-snap-type: x mandatory;
+}
+
+.card {
+  scroll-snap-align: start;
+}
