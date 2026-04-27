@@ -372,7 +372,13 @@
       </p>
     </div>
 
-    <div id="eventos-list" class="cards"></div>
+    <div class="carousel">
+  <button class="carousel__btn left" id="prevBtn">&#10094;</button>
+
+  <div id="eventos-list" class="carousel__track"></div>
+
+  <button class="carousel__btn right" id="nextBtn">&#10095;</button>
+</div>
   </div>
 </section>
 	  
@@ -528,6 +534,20 @@ eventos.forEach(e => {
   `;
 
   contenedor.appendChild(card);
+});
+</script>
+
+<script>
+const track = document.getElementById("eventos-list");
+const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
+
+nextBtn.addEventListener("click", () => {
+  track.scrollBy({ left: 300, behavior: "smooth" });
+});
+
+prevBtn.addEventListener("click", () => {
+  track.scrollBy({ left: -300, behavior: "smooth" });
 });
 </script>
 	
